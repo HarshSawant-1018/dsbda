@@ -1,0 +1,24 @@
+import pandas as pd
+
+df = pd.read_csv("pseudo_facebook.csv")
+
+df.info()
+
+subset1 = df[["userid","friend_count"]]
+
+subset2 = df[["age","gender"]]
+
+merged = pd.merge(subset1,subset2, left_index=True, right_index=True)
+merged
+
+sorted = df.sort_values(by="age",ascending=False)
+sorted
+
+transposed_df = df.T
+transposed_df
+
+df.shape
+
+subset3 = df[["userid","likes","likes_received","mobile_likes"]]
+
+pd.melt(subset3,id_vars=["userid"],var_name="likes",value_name="count")
